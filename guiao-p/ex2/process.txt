@@ -1,0 +1,15 @@
+antlr4-build
+antlr4-test
+cat p1.txt | antlr4-test -gui
+
+antlr4-visitor [Nome do Visitor] [Tipo]
+
+antlr4-main -v [Nome do Visitor] [Nome da Gramática] program
+
+antlr4-build
+antlr4-run p1.txt
+
+antlr4 [Nome da Gramática] -listener
+
+antlr4-clean
+./run-jar p1.txt 
