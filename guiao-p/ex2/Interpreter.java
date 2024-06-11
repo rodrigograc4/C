@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 @SuppressWarnings("CheckReturnValue")
 public class Interpreter extends FracLangBaseVisitor<Fraction> {
@@ -91,7 +92,8 @@ public class Interpreter extends FracLangBaseVisitor<Fraction> {
       if ( assignments.get(id) != null){
          return assignments.get(id);
       }else{
-         System.err.println("ERROR: variable "+id +" not found!");
+         String quotedID= '"'+id+'"';
+         System.err.println("ERROR: variable "+quotedID +" not found!");
          return null;
       }
 
@@ -127,5 +129,24 @@ public class Interpreter extends FracLangBaseVisitor<Fraction> {
       int denominador = Integer.parseInt(ctx.NUMBER(1).getText());
       Fraction f= new Fraction(numerador, denominador);
       return f;
+   }
+
+   @Override
+   public Fraction visitExprRead(FracLangParser.ExprReadContext ctx) {
+      String prompt = ctx.STRING().getText();
+      prompt = prompt.substring(1, prompt.length() - 1);
+      System.out.print(prompt+": ");
+
+      Scanner in = new Scanner(System.in);
+      String number = in.nextLine();
+      
+      int frac = Integer.parseInt(number);
+      Fraction f = new Fraction(frac);
+
+      if (f!=null){
+         return f;
+      }else{
+         return null;
+      }
    }
 }

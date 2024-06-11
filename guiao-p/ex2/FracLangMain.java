@@ -1,3 +1,4 @@
+import java.io.FileInputStream;
 import java.io.IOException;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
@@ -6,7 +7,7 @@ public class FracLangMain {
    public static void main(String[] args) {
       try {
          // create a CharStream that reads from standard input:
-         CharStream input = CharStreams.fromStream(System.in);
+         CharStream input = CharStreams.fromStream(new FileInputStream(args[0]));
          // create a lexer that feeds off of input CharStream:
          FracLangLexer lexer = new FracLangLexer(input);
          // create a buffer of tokens pulled from the lexer:
