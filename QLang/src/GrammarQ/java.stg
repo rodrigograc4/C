@@ -1,0 +1,81 @@
+stats(stat) ::= <<
+<if(stat)><stat; separator="\n"><endif>
+>>
+
+createStudent(name) ::=<
+Student student = new Student(<name>);
+>>
+
+
+createQuiz(student, quizname) ::= <<
+Test quiz = new Test(<student>, <quizname>); 
+>>
+
+createGrade(qtype, fract) ::= <<
+Grade grade = new Grade(<qtype>, <fract>); 
+>>
+
+addQuestion(question) :: <<
+questions_string = new ArrayList\<Question>(Arrays.asList(<questions>));
+questions_types = new ArrayList\<Question>(Arrays.asList(<questionType>));
+for(QuestionType questionType : questions_types){
+    for(Question q: questions_string){
+        if(q.questionType==q){
+            quiz.addQuestion(q);
+        }
+    }
+}
+>>
+
+addCorrectOption(option,array) ::= <<
+answersBooleans = new HashMap<String,Boolean>();
+questionsAndRightAnswers = new HashMap<Question, String>();
+for (Questions q : questionsAndAnswers.keys()) {
+    valorQuestion = q.getValue()
+    for(String qAns: answersBooleans) {
+        valueBoolean = get(qAns);
+        if( valorQuestion ==qAns && valueBoolean==true ){
+            questionsAndRightAnswers.put(q,qAns)
+        }
+    }
+}
+return questionsAndRightAnswers;
+>>
+
+addWrongOption(option,array) ::= <<
+answersBooleans = new HashMap<String,Boolean>();
+questionsAndWrongAnswers = new HashMap<Question, String>();
+for (Questions q : questionsAndAnswers.keys()) {
+    valorQuestion = q.getValue()
+    for(String qAns: answersBooleans) {
+        valueBoolean = get(qAns);
+        if (valorQuestion == qAns && valueBoolean = false){
+            questionsAndWrongAnswers.put(q, qAns);
+        }
+    }
+}
+>>
+
+holequestion(id,grade, question1, answer) ::= <<
+HoleQuestion <id> = new HoleQuestion("<id>",<question1>, <answer>);
+quiz.addQuestion(<id>);
+>>
+
+codeopenquestions(id, grade, question1, answer) ::= <<
+CodeOpenQuestion <id> = new CodeOpenQuestion("<id>",<grade>, <question1>, <answer>);
+quiz.addQuestion(<id>);
+>>
+
+openquestions(id, grade, question1, answer) ::= <<
+OpenQuestion <id> = new OpenQuestion("<id>",<grade>, <question1>, <answer>);
+quiz.addQuestion(<id>);
+>>
+
+codeholequestions(id, grade, question1, answer) ::= <<
+OpenQuestion <id> = new OpenQuestion("<id>",<grade>, <question1>, <answer>);
+quiz.addQuestion(<id>);
+>>
+
+createreport() ::=<<
+quiz.writeResultsToFile();
+>>
