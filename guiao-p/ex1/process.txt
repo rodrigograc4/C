@@ -3,7 +3,7 @@ antlr4-build
 antlr4-test
 cat p1.txt | antlr4-test -gui
 
-Gerar um Visitor / SEmanthic Analysis / Executer / Interpreter:
+Gerar um Visitor / Semanthic Analysis / Executer / Interpreter:
 antlr4-visitor [Nome do Visitor] [Tipo]
 
 Gerar um Main:

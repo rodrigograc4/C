@@ -17,9 +17,14 @@ assignment:
     ;
 
 expr:
-    'input(' STRING ')'                       #ExprInput
-    | ID                                    #ExprID
-    | STRING                                #ExprString
+    'input(' expr ')'                           #ExprInput
+    | expr '/' expr '/' expr                    #ExprReplac
+    | '(' expr ')'                              #ExprParen
+    | 'trim' expr                               #ExprTrim
+    | expr '+' expr                             #ExprConcat
+    | expr '-' expr                             #ExprRemove
+    | ID                                        #ExprID
+    | STRING                                    #ExprString
     ;
 
 ID: [a-zA-Z0-9]+;
