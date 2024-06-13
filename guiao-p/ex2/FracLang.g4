@@ -22,7 +22,7 @@ expr:
     | expr op=('*' | ':') expr                  #ExprMultDiv
     | expr op=('+' | '-') expr                  #ExprAddSub
     | '(' expr ')'                              #ExprPar
-    | 'read' STRING                               #ExprRead
+    | 'read' STRING                             #ExprRead
     | ID                                        #ExprID
     | NUMBER                                    #ExprNumber
     ;
